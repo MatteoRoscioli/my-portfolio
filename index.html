@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zuno Brand Showcase</title>
+  <link rel="stylesheet" href="zuno-styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    
+    body {
+      background-color: var(--zuno-black);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 800px;
+      aspect-ratio: 1/1;
+    }
+    
+    .grid-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .portrait {
+      grid-row: span 1;
+      grid-column: span 1;
+    }
+    
+    .landscape {
+      grid-row: span 1;
+      grid-column: span 2;
+    }
+    
+    .tall {
+      grid-row: span 2;
+      grid-column: span 1;
+    }
+    
+    .woman-smiling {
+      background-image: url('/api/placeholder/400/320');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .phone-hand {
+      background-image: url('/api/placeholder/400/320');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .content {
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .bonus-content {
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    
+    .yes-way {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--zuno-dark-green);
+    }
+    
+    .zuno-logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--zuno-dark-green);
+    }
+    
+    .percentage {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--zuno-white);
+    }
+    
+    .team-avatars {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--zuno-gray);
+      border: 2px solid var(--zuno-teal);
+      margin-right: -10px;
+    }
+    
+    .team-text {
+      color: var(--zuno-dark-green);
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+
+    .controller-section {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .controller-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--zuno-dark-green);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--zuno-white);
+    }
+    
+    .controller-button.active {
+      background-color: var(--zuno-white);
+      color: var(--zuno-dark-green);
+    }
+    
+    .app-icons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .app-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--zuno-white);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <!-- Top row -->
+    <div class="grid-item portrait woman-smiling zuno-shadow-medium">
+      <!-- Woman smiling in teal background -->
+    </div>
+    <div class="grid-item portrait zuno-bg-dark-green zuno-shadow-medium">
+      <div class="content">
+        <div class="percentage">+25%</div>
+        <div class="zuno-text-white" style="margin-top: 10px;">$5,000</div>
+      </div>
+    </div>
+    <div class="grid-item portrait phone-hand zuno-shadow-medium">
+      <!-- Phone in hand image -->
+    </div>
+    
+    <!-- Middle row -->
+    <div class="grid-item landscape zuno-bg-teal zuno-shadow-medium">
+      <div class="content">
+        <div class="yes-way">Yes Way</div>
+      </div>
+    </div>
+    <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
+      <div class="content">
+        <div class="zuno-logo">%zuno</div>
+      </div>
+    </div>
+    
+    <!-- Bottom row -->
+    <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
+      <div class="bonus-content">
+        <div class="team-avatars">
+          <div class="avatar zuno-radius-full" style="background-image: url('/api/placeholder/40/40')"></div>
+          <div class="avatar zuno-radius-full" style="background-image: url('/api/placeholder/40/40')"></div>
+          <div class="avatar zuno-radius-full" style="background-image: url('/api/placeholder/40/40')"></div>
+          <div style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--zuno-dark-green); display: flex; justify-content: center; align-items: center; color: var(--zuno-white); font-size: 0.8rem;">+</div>
+        </div>
+        <div class="team-text">Just Better Ways To Play</div>
+      </div>
+    </div>
+    <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
+      <div class="content">
+        <div class="controller-section">
+          <div class="controller-button zuno-radius-full"><span>◀</span></div>
+          <div class="controller-button active zuno-radius-full"><span>●</span></div>
+          <div class="controller-button zuno-radius-full"><span>●</span></div>
+          <div class="controller-button zuno-radius-full"><span>▶</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
+      <div class="content">
+        <div class="app-icons">
+          <div class="app-icon zuno-bg-turquoise zuno-shadow-sharp">
+            <span>%</span>
+          </div>
+          <div class="app-icon zuno-bg-dark-green zuno-shadow-sharp">
+            <span>C</span>
+          </div>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.8rem;">
+          <span style="margin-right: 20px;">Zuno</span>
+          <span>Calendar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

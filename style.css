@@ -1,0 +1,98 @@
+/* Zuno Brand Style Guide */
+
+/* Color Palette */
+:root {
+    /* Primary Colors */
+    --zuno-teal: #B4EAE4;           /* Light teal background color */
+    --zuno-dark-green: #136956;     /* Dark green for text and accents */
+    --zuno-purple: #E9D8FF;         /* Light purple accent color */
+    --zuno-turquoise: #40BDAD;      /* Turquoise for app icons */
+    
+    /* Neutral Colors */
+    --zuno-white: #FFFFFF;
+    --zuno-black: #121212;
+    --zuno-gray: #CCCCCC;
+  }
+  
+  /* Border Radius */
+  .zuno-radius-sm {
+    border-radius: 8px;
+  }
+  
+  .zuno-radius-md {
+    border-radius: 12px;  /* Standard rounded corners for grid items */
+  }
+  
+  .zuno-radius-lg {
+    border-radius: 15px;  /* Larger radius for app icons */
+  }
+  
+  .zuno-radius-full {
+    border-radius: 50%;   /* Circular elements like avatars and control buttons */
+  }
+  
+  /* Shadows */
+  .zuno-shadow-subtle {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  .zuno-shadow-medium {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .zuno-shadow-sharp {
+    box-shadow: 0 6px 12px rgba(19, 105, 86, 0.2);  /* Colored shadow matching brand */
+  }
+  
+  /* Grid Item Styles */
+  .zuno-grid-item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .zuno-grid-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(19, 105, 86, 0.25);
+  }
+  
+  /* Background Classes */
+  .zuno-bg-teal {
+    background-color: var(--zuno-teal);
+  }
+  
+  .zuno-bg-dark-green {
+    background-color: var(--zuno-dark-green);
+  }
+  
+  .zuno-bg-purple {
+    background-color: var(--zuno-purple);
+  }
+  
+  .zuno-bg-turquoise {
+    background-color: var(--zuno-turquoise);
+  }
+  
+  /* Text Colors */
+  .zuno-text-dark-green {
+    color: var(--zuno-dark-green);
+  }
+  
+  .zuno-text-white {
+    color: var(--zuno-white);
+  }
+  
+  /* App Icon Styles */
+  .zuno-app-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background-color: var(--zuno-turquoise);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--zuno-white);
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
