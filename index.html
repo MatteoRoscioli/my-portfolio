@@ -3,38 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zuno Brand Showcase</title>
+  <title>My Professional Portfolio</title>
   <link rel="stylesheet" href="zuno-styles.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif;
     }
     
     body {
       background-color: var(--zuno-black);
       padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
     }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--zuno-white);
+    }
+
+    .logo span {
+      color: var(--zuno-teal);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--zuno-white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--zuno-teal);
+    }
+
+    .hero {
+      color: var(--zuno-white);
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
     
-    .grid-container {
+    .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 10px;
-      max-width: 800px;
-      aspect-ratio: 1/1;
+      grid-auto-rows: minmax(200px, auto);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     
     .grid-item {
       border-radius: 12px;
       overflow: hidden;
       position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-5px);
     }
     
     .portrait {
@@ -52,16 +106,15 @@
       grid-column: span 1;
     }
     
-    .woman-smiling {
-      background-image: url('/api/placeholder/400/320');
-      background-size: cover;
-      background-position: center;
+    .featured {
+      grid-column: span 2;
+      grid-row: span 2;
     }
     
-    .phone-hand {
-      background-image: url('/api/placeholder/400/320');
-      background-size: cover;
-      background-position: center;
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .content {
@@ -74,59 +127,159 @@
       text-align: center;
     }
     
-    .bonus-content {
-      padding: 20px;
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
+      background: rgba(19, 105, 86, 0.85);
+      color: var(--zuno-white);
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-    }
-    
-    .yes-way {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--zuno-dark-green);
-    }
-    
-    .zuno-logo {
-      font-size: 2rem;
-      font-weight: bold;
-      color: var(--zuno-dark-green);
-    }
-    
-    .percentage {
-      font-size: 3rem;
-      font-weight: bold;
-      color: var(--zuno-white);
-    }
-    
-    .team-avatars {
-      display: flex;
-      margin-bottom: 10px;
-    }
-    
-    .avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background-color: var(--zuno-gray);
-      border: 2px solid var(--zuno-teal);
-      margin-right: -10px;
-    }
-    
-    .team-text {
-      color: var(--zuno-dark-green);
-      font-size: 0.8rem;
-      margin-top: 5px;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 20px;
     }
 
-    .controller-section {
+    .grid-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .project-category {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .view-project {
+      background-color: var(--zuno-teal);
+      color: var(--zuno-dark-green);
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .view-project:hover {
+      background-color: var(--zuno-white);
+    }
+
+    .profile-section {
+      text-align: center;
+    }
+
+    .profile-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--zuno-teal);
+      margin-bottom: 15px;
+    }
+
+    .profile-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--zuno-dark-green);
+      margin-bottom: 5px;
+    }
+
+    .profile-title {
+      color: var(--zuno-dark-green);
+      font-weight: 500;
+    }
+
+    .skills-container {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
     }
-    
-    .controller-button {
+
+    .skill-badge {
+      background-color: var(--zuno-dark-green);
+      color: var(--zuno-white);
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .stat {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--zuno-dark-green);
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--zuno-dark-green);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .contact-method {
+      color: var(--zuno-dark-green);
+      font-weight: 500;
+    }
+
+    .testimonial {
+      font-style: italic;
+      color: var(--zuno-dark-green);
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .testimonial::before {
+  content: "\201C"; /* Unicode for opening double quotation mark */
+  font-size: 3rem;
+  position: absolute;
+  top: -20px;
+  left: -15px;
+  opacity: 0.2;
+}
+    .testimonial-author {
+      margin-top: 10px;
+      font-weight: bold;
+      color: var(--zuno-dark-green);
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--zuno-white);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .social-icon {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -135,96 +288,157 @@
       justify-content: center;
       align-items: center;
       color: var(--zuno-white);
+      font-size: 1.2rem;
     }
-    
-    .controller-button.active {
-      background-color: var(--zuno-white);
-      color: var(--zuno-dark-green);
+
+    .resume-link {
+      margin-top: 15px;
     }
-    
-    .app-icons {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .app-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+
+    .resume-button {
+      background-color: var(--zuno-dark-green);
       color: var(--zuno-white);
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
       font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .resume-button:hover {
+      background-color: var(--zuno-teal);
+      color: var(--zuno-dark-green);
     }
   </style>
 </head>
 <body>
-  <div class="grid-container">
-    <!-- Top row -->
-    <div class="grid-item portrait woman-smiling zuno-shadow-medium">
-      <!-- Woman smiling in teal background -->
+  <header>
+    <div class="logo">My<span>Portfolio</span></div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Hello, I'm [Your Name]</h1>
+    <p>A passionate [Your Profession] with expertise in [Your Key Skills]. I create impactful solutions that make a difference.</p>
+  </section>
+
+  <div class="portfolio-grid">
+    <!-- Profile Section -->
+    <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
+      <div class="content">
+        <div class="profile-section">
+          <img src="/api/placeholder/200/200" alt="Profile Photo" class="profile-photo">
+          <div class="profile-name">[Your Name]</div>
+          <div class="profile-title">[Your Title/Profession]</div>
+        </div>
+      </div>
     </div>
+
+    <!-- Featured Project -->
+    <div class="grid-item landscape zuno-shadow-medium">
+      <img src="/api/placeholder/600/300" alt="Featured Project" class="project-image">
+      <div class="overlay">
+        <h3 class="project-title">[Project Name]</h3>
+        <p class="project-category">[Project Category]</p>
+        <a href="#" class="view-project">View Project</a>
+      </div>
+    </div>
+
+    <!-- Experience/Stats -->
     <div class="grid-item portrait zuno-bg-dark-green zuno-shadow-medium">
       <div class="content">
-        <div class="percentage">+25%</div>
-        <div class="zuno-text-white" style="margin-top: 10px;">$5,000</div>
+        <div class="percentage">5+</div>
+        <div class="zuno-text-white" style="margin-top: 10px;">Years Experience</div>
       </div>
     </div>
-    <div class="grid-item portrait phone-hand zuno-shadow-medium">
-      <!-- Phone in hand image -->
-    </div>
     
-    <!-- Middle row -->
+    <!-- Skills -->
     <div class="grid-item landscape zuno-bg-teal zuno-shadow-medium">
       <div class="content">
-        <div class="yes-way">Yes Way</div>
+        <h3 style="color: var(--zuno-dark-green); margin-bottom: 20px;">MY SKILLS</h3>
+        <div class="skills-container">
+          <div class="skill-badge">UI/UX Design</div>
+          <div class="skill-badge">Web Development</div>
+          <div class="skill-badge">JavaScript</div>
+          <div class="skill-badge">React</div>
+          <div class="skill-badge">Node.js</div>
+          <div class="skill-badge">Python</div>
+          <div class="skill-badge">Adobe XD</div>
+          <div class="skill-badge">Figma</div>
+        </div>
       </div>
     </div>
-    <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
-      <div class="content">
-        <div class="zuno-logo">%zuno</div>
+
+    <!-- Project 1 -->
+    <div class="grid-item portrait zuno-shadow-medium">
+      <img src="/api/placeholder/400/400" alt="Project 1" class="project-image">
+      <div class="overlay">
+        <h3 class="project-title">[Project 1]</h3>
+        <p class="project-category">[Category]</p>
+        <a href="#" class="view-project">View Project</a>
       </div>
     </div>
     
-    <!-- Bottom row -->
-    <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
-      <div class="bonus-content">
-        <div class="team-avatars">
-          <div class="avatar zuno-radius-full" style="background-image: url('/api/placeholder/40/40')"></div>
-          <div class="avatar zuno-radius-full" style="background-image: url('/api/placeholder/40/40')"></div>
-          <div class="avatar zuno-radius-full" style="background-image: url('/api/placeholder/40/40')"></div>
-          <div style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--zuno-dark-green); display: flex; justify-content: center; align-items: center; color: var(--zuno-white); font-size: 0.8rem;">+</div>
-        </div>
-        <div class="team-text">Just Better Ways To Play</div>
-      </div>
-    </div>
+    <!-- Professional Mission -->
     <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
       <div class="content">
-        <div class="controller-section">
-          <div class="controller-button zuno-radius-full"><span>◀</span></div>
-          <div class="controller-button active zuno-radius-full"><span>●</span></div>
-          <div class="controller-button zuno-radius-full"><span>●</span></div>
-          <div class="controller-button zuno-radius-full"><span>▶</span></div>
-        </div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: var(--zuno-dark-green); margin-bottom: 10px;">My Mission</div>
+        <p style="color: var(--zuno-dark-green);">To create intuitive and impactful solutions that solve real-world problems and deliver exceptional user experiences.</p>
       </div>
     </div>
+
+    <!-- Project 2 -->
+    <div class="grid-item portrait zuno-shadow-medium">
+      <img src="/api/placeholder/400/400" alt="Project 2" class="project-image">
+      <div class="overlay">
+        <h3 class="project-title">[Project 2]</h3>
+        <p class="project-category">[Category]</p>
+        <a href="#" class="view-project">View Project</a>
+      </div>
+    </div>
+    
+    <!-- Testimonial -->
+    <div class="grid-item landscape zuno-bg-teal zuno-shadow-medium">
+      <div class="content">
+        <div class="testimonial">
+          "[Your Name] is an exceptional professional who consistently delivers high-quality work. Their attention to detail and creative problem-solving skills make them a valuable asset to any project."
+        </div>
+        <div class="testimonial-author">— [Client/Colleague Name], [Company]</div>
+      </div>
+    </div>
+
+    <!-- Contact -->
     <div class="grid-item portrait zuno-bg-teal zuno-shadow-medium">
       <div class="content">
-        <div class="app-icons">
-          <div class="app-icon zuno-bg-turquoise zuno-shadow-sharp">
-            <span>%</span>
+        <div class="contact-info">
+          <h3 style="color: var(--zuno-dark-green); margin-bottom: 15px;">CONTACT ME</h3>
+          <div class="contact-method">your.email@example.com</div>
+          <div class="contact-method">(555) 123-4567</div>
+          <div class="contact-method">[Your Location]</div>
+          <div class="resume-link">
+            <a href="#" class="resume-button">Download Resume</a>
           </div>
-          <div class="app-icon zuno-bg-dark-green zuno-shadow-sharp">
-            <span>C</span>
-          </div>
-        </div>
-        <div style="margin-top: 10px; font-size: 0.8rem;">
-          <span style="margin-right: 20px;">Zuno</span>
-          <span>Calendar</span>
         </div>
       </div>
     </div>
   </div>
+
+  <footer>
+    <div class="social-links">
+      <div class="social-icon">in</div>
+      <div class="social-icon">gh</div>
+      <div class="social-icon">be</div>
+      <div class="social-icon">tw</div>
+    </div>
+    <p>© 2025 [Your Name]. All rights reserved.</p>
+  </footer>
 </body>
 </html>
